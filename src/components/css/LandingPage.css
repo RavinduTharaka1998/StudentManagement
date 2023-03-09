@@ -1,0 +1,20 @@
+.wrap {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+h2 {
+    color: rgb(7, 156, 220);
+    margin-left: -80px;
+}
+
+nav  ul li {
+    color: brown !important;
+}
+
+.slide {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
