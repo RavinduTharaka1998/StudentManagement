@@ -2,7 +2,10 @@ import  React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Link} from "react-router-dom";
 import {Button, Form, FormControl, Navbar} from "react-bootstrap";
+
 import logo from "../logo.png";
+import './css/LandingPage.css';
+import Footer from './footer'
 
 
 export default  class Create extends  Component{
@@ -14,9 +17,9 @@ export default  class Create extends  Component{
         this.onChangeAddress = this.onChangeAddress.bind(this);
         this.onChangeNIC = this.onChangeNIC.bind(this);
         this.onChangePhone = this.onChangePhone.bind(this);
-        this.onChangeCustomer_Type = this.onChangeCustomer_Type.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangecPassword = this.onChangecPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -25,7 +28,8 @@ export default  class Create extends  Component{
             nic:'',
             phone:'',
             email:'',
-            password:''
+            password:'',
+            cpassword:''
         }
     }
     onChangeName(e){
@@ -48,12 +52,6 @@ export default  class Create extends  Component{
             phone: e.target.value
         });
     }
-    onChangeCustomer_Type(e){
-        this.setState( {
-            customer_type: e.target.value
-        });
-    }
-
     onChangeEmail(e){
 
             this.setState({
@@ -65,6 +63,11 @@ export default  class Create extends  Component{
             password: e.target.value
         });
     }
+    onChangecPassword(e){
+        this.setState( {
+            cpassword: e.target.value
+        });
+    }
     onSubmit(e){
         e.preventDefault();
         const obj = {
@@ -72,7 +75,6 @@ export default  class Create extends  Component{
             address : this.state.address,
             nic : this.state.nic,
             phone : this.state.phone,
-            customer_type : this.state.customer_type,
             email : this.state.email,
             password : this.state.password
         };
@@ -98,7 +100,6 @@ export default  class Create extends  Component{
             address :'',
             nic :'',
             phone:'',
-            customer_type:'',
             email:'',
             password:''
 
@@ -108,88 +109,117 @@ export default  class Create extends  Component{
 
     render() {
         return(
-            <Router>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">
-                        <img
-                            alt=""
-                            src={logo}
-                            width="120"
-                            height="120"
-                            className="d-inline-block align-top"
+            <div class = "wrap">
+                    <Navbar>
+                        <Navbar.Brand href="#home">
+                            <img
+                                alt=""
+                                src={logo}
+                                width="200"
+                                height="120"
 
-                        />{''}
-                        <h1 className="d-xl-inline">Online Buy and Sell Shopping Store</h1>
-                    </Navbar.Brand>
-                </Navbar>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="collapse navbar-collapse" id = "navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto font-weight-bold mr form-control-lg">
-                            <li className="nav-item">
-                                <Link to={'/'} className = "nav-link">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/create'} className = "nav-link ">Registration</Link>
-                            </li>
+                            />{''}
+                            <h2 className="d-xl-inline">University of Information Technology</h2>
+                        </Navbar.Brand>
+                            <img src = "https://img.freepik.com/free-vector/flat-design-minimal-technology-twitch-banner_23-2149173938.jpg" height="100"/>
+                            <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
+                            <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
+                    </Navbar>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-info">
+                        <div className="collapse navbar-collapse" id = "navbarSupportedContent">
+                            <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
+                                <li className="nav-item">
+                                    <Link to={'/'} className = "nav-link">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/create'} className = "nav-link ">New Student</Link>
+                                </li>
 
-                            <li className="nav-item">
-                                <Link to={'/aboutUs'} className = "nav-link">About Us</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/aboutUs'} className = "nav-link">Contact Us</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/aboutUs'} className = "nav-link">History</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/signIn'} className = "nav-link">Sign In</Link>
-                            </li>
-                        </ul>
+                                <li className="nav-item">
+                                    <Link to={'/aboutUs'} className = "nav-link">About Us</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/aboutUs'} className = "nav-link">Contact Us</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/signIn'} className = "nav-link">Sign In</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <Form inline>
+                                <input class="form-control input-sm mr-1"  type="text" placeholder='search here....'/>
+                                <Button type="submit" className='btn btn-info btn-sm'>search</Button>
+                        </Form>
+                    </nav>
+                    <br/>
+                    <div className='row-frm'>
+                        <div className='col-frm-1'>
+                            <img src = "https://turnkey.lk/wp-content/uploads/2013/12/b8.jpg" width = "" height = ""/>
+                            <h1>Our Aims and scope</h1>
+                            <p> Smart Learning Environments seeks academic articles on the issues related to the reform of the ways 
+                                of teaching and learning through advancing current learning environments towards smart learning environments. 
+                                It provides opportunities for discussions and constructive dialogue among various stakeholders on the limitations 
+                                of existing learning environments, need for reform, innovative uses of emerging pedagogical approaches and technologies, 
+                                and sharing and promotion of best practices, leading to the evolution, design and implementation of smart learning environments. 
+                                The aim of the journal is to help various stakeholders of smart learning environments better understand 
+                                each other's role in the overall process of education and how they may support each other.</p>
+                                <img src = "" width = "" height = ""/>
+                        </div>
+                        <div className="container reg-frm" style={{marginTop:10}}>
+                            <h3 className="text-center">New Registration Form</h3>
+                            <form onSubmit={this.onSubmit}>
+                                <div className="form-group">
+                                    <label>Full Name :</label>
+                                    <input type ="text" required = "Please enter name" className="form-control" value={this.state.name} onChange = {this.onChangeName}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Address :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.address} onChange = {this.onChangeAddress}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>NIC :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Phone Number :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>eMail Address :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.email} onChange = {this.onChangeEmail}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Password :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.password} onChange = {this.onChangePassword}/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Confirm Password :</label>
+                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.cpassword} onChange = {this.onChangecPassword}/>
+                                </div>
+
+                                <div className="form-group">
+                                    <input type = "submit" value = "Register" className="btn btn-info"/>
+                                </div>
+                              
+                                <br/>
+                                <h5>Click to see our - </h5>
+                                <h6>privacy & policeis</h6>
+                                <h6>Terms and Conditions</h6>
+                            </form>
+                        </div>
                     </div>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-                        <Button type="submit">Submit</Button>
-                    </Form>
-                </nav>
-                <br/>
-                <div className="container " style={{marginTop:10}}>
-                    <h3 className="text-center">Registration Form</h3>
-                    <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label>Name :</label>
-                            <input type ="text" required = "Please enter name" className="form-control" value={this.state.name} onChange = {this.onChangeName}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Address :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.address} onChange = {this.onChangeAddress}/>
-                        </div>
-                        <div className="form-group">
-                            <label>NIC :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Phone Number :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Customer Type :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.customer_type} onChange = {this.onChangeCustomer_Type}/>
-                        </div>
-                        <div className="form-group">
-                            <label>eMail Address :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.email} onChange = {this.onChangeEmail}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Password :</label>
-                            <input type ="text" required = "Please enter address" className="form-control" value={this.state.password} onChange = {this.onChangePassword}/>
-                        </div>
 
-                        <div className="form-group">
-                            <input type = "submit" value = "Register Service" className="btn-primary"/>
-                        </div>
-                    </form>
-                </div>
-            </Router>
+                    <br/><br/>
+                    <div className='top-footer'>
+                        <img src = "https://media.istockphoto.com/id/1165524880/photo/happy-diverse-students-walking-in-college-campus.jpg?s=612x612&w=0&k=20&c=5Ag5hy-eDDg0jifu0tQ10uVA0DA9MRnUZ9520wwd9ck=" width="400"/>
+                        <img src = "https://www.cinec.edu/wp-content/uploads/2016/11/cinec-malabe-01-mobile.jpg" width="475"/>
+                        <img src = "https://sdticampus.lk/wp-content/uploads/2022/08/6L3A0872.jpg" width="" height=""/>
+                    </div>
+                    <div>
+                         <hr className="shadow-lg card-footer"/>
+                    </div>
+                    <Footer/>
+            </div>
         )
     }
 }

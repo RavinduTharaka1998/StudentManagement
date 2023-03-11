@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const footer = () =>{
     return(
        <footer>
@@ -7,6 +8,7 @@ const footer = () =>{
                <p className="text-center">copy @ site hackers</p>
            </div>
        </footer>
+   
     );
 }
 export default footer;

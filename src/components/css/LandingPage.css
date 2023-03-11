@@ -2,6 +2,8 @@
     width: 90%;
     display: block;
     margin: 0 auto;
+    background-color: rgb(237, 233, 233);
+    padding: 10px;
 }
 
 h2 {
@@ -14,7 +16,54 @@ nav  ul li {
 }
 
 .slide {
-    width: 80%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
 }
+
+.aim {
+    padding: 20px;
+    text-align: justify;
+}
+
+.aim h1 {
+    color: rgb(11, 98, 152);
+}
+
+.row-frm {
+    display: flex;
+}
+
+.row-frm .col-frm-1 {
+    margin-top: 60px;
+    width: 25%;
+    padding: 20px;
+}
+
+.row-frm .col-frm-1 h1 {
+    margin-top: 10px;
+    text-align: justify;
+    color: rgb(14, 67, 116);
+}
+
+.row-frm .col-frm-1 p {
+    text-align: justify;
+    color: rgb(66, 65, 65);
+}
+
+.reg-frm {
+    background-color: rgb(244, 244, 248);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.top-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-footer img {
+    width: 450px;
+    height: 300px;
+}
+
