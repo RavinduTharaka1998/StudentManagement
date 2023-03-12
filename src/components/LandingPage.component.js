@@ -24,7 +24,6 @@ class LandingPage extends Component{
                             />
                             <h2 className="d-xl-inline" >University of Information Technology</h2>
                         </Navbar.Brand>
-                        <img src = "https://img.freepik.com/free-vector/flat-design-minimal-technology-twitch-banner_23-2149173938.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
                     </Navbar>

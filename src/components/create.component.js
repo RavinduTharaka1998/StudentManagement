@@ -78,35 +78,54 @@ export default  class Create extends  Component{
             email : this.state.email,
             password : this.state.password
         };
-        if(this.state.customer_type === "Buyer" || this.state.customer_type==="Seller"){
-            if(this.state.phone.MAX_LENGTH === 10){
-                axios.post('http://localhost:4000/business/add',obj)
-                    .then(res => {
-                        alert("Registration Successfully")
-                        console.log(res.data)});
-                this.props.history.push('/signIn');
-            }
-            else{
-                alert('Invalid phone number')
-            }
 
+        const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
+       
+
+        if(this.state.password ===  this.state.cpassword){
+            if(this.state.password.length >= 8){
+                if(this.state.phone.length === 10){
+                    if(this.state.nic.length === 10){
+                        if(lastelement === 'V' || lastelement === 'v'){
+                            axios.post('http://localhost:4000/campus/add',obj)
+                                .then(res => {
+                                    alert("Registration Successfully");
+                                    this.setState({
+                                        name :'',
+                                        address :'',
+                                        nic :'',
+                                        phone:'',
+                                        email:'',
+                                        password:'',
+                                        cpassword:''
+                            
+                                    })
+                                    console.log(res.data)});
+                            this.props.history.push('/signIn');
+                        } 
+                        else {
+                            alert('Invalid NIC Number.. Pleace enter "V" for nic.');
+                        }
+                    } 
+                    else {
+                        alert('Invalid NIC Number.. Pleace enter 10 digits for nic.');
+                    }
+                }
+                else{
+                    alert('Invalid phone number.. Pleace enter 10 numbers for contact number.');
+                }
+            } 
+            else {
+                alert('Pleace enter at least 8 characters for passwords.');
+            }
         }else{
-            alert('User type invalid.. Please enter "Buyer" or "Seller" ')
+            alert('Your password and confirm password are miss match... Pleace enter same passwords');
         }
-
-
-        this.setState({
-            name :'',
-            address :'',
-            nic :'',
-            phone:'',
-            email:'',
-            password:''
-
-        })
-
     }
 
+
+
+    
     render() {
         return(
             <div class = "wrap">
@@ -121,7 +140,6 @@ export default  class Create extends  Component{
                             />{''}
                             <h2 className="d-xl-inline">University of Information Technology</h2>
                         </Navbar.Brand>
-                            <img src = "https://img.freepik.com/free-vector/flat-design-minimal-technology-twitch-banner_23-2149173938.jpg" height="100"/>
                             <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
                             <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
                     </Navbar>
@@ -166,35 +184,36 @@ export default  class Create extends  Component{
                                 <img src = "" width = "" height = ""/>
                         </div>
                         <div className="container reg-frm" style={{marginTop:10}}>
-                            <h3 className="text-center">New Registration Form</h3>
+                            <h3 className="text-center">New Student Registration Form</h3>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <label>Full Name :</label>
-                                    <input type ="text" required = "Please enter name" className="form-control" value={this.state.name} onChange = {this.onChangeName}/>
+                                    <input type ="text" required placeholder = "Please enter full name" className="form-control" value={this.state.name} onChange = {this.onChangeName}/>
                                 </div>
                                 <div className="form-group">
                                     <label>Address :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.address} onChange = {this.onChangeAddress}/>
+                                    <input type ="text" required placeholder = "Please enter address" className="form-control" value={this.state.address} onChange = {this.onChangeAddress}/>
                                 </div>
                                 <div className="form-group">
                                     <label>NIC :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
+                                    <input type ="text" required placeholder = "Please enter nic" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
                                 </div>
                                 <div className="form-group">
                                     <label>Phone Number :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
+                                    <input type ="text" required placeholder = "Please enter contact number" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
                                 </div>
                                 <div className="form-group">
                                     <label>eMail Address :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.email} onChange = {this.onChangeEmail}/>
+                                    <input type ="email" required placeholder = "Please enter email" className="form-control" value={this.state.email} onChange = {this.onChangeEmail}/>
                                 </div>
                                 <div className="form-group">
                                     <label>Password :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.password} onChange = {this.onChangePassword}/>
+                                    <input type ="password" required placeholder = "Please enter password" className="form-control" value={this.state.password} onChange = {this.onChangePassword}/>
+                                    <span>( At least 8 characters )</span>
                                 </div>
                                 <div className="form-group">
                                     <label>Confirm Password :</label>
-                                    <input type ="text" required = "Please enter address" className="form-control" value={this.state.cpassword} onChange = {this.onChangecPassword}/>
+                                    <input type ="password" required placeholder = "Please re-enter password" className="form-control" value={this.state.cpassword} onChange = {this.onChangecPassword}/>
                                 </div>
 
                                 <div className="form-group">

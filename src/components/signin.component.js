@@ -38,10 +38,11 @@ export default  class SignIn extends  Component{
             email : this.state.email,
             password : this.state.password
         };
-        console.log('mail '+this.state.email);
-        console.log('pass '+this.state.password);
-        if(this.state.customer_type === "Buyer"){
-            axios.post('http://localhost:4000/business/loginbuyer',object)
+
+       alert('mail '+this.state.email);
+       alert('pass '+this.state.password);
+        
+            axios.post('http://localhost:4000/campus/login',object)
                 .then(res => {
                     if(res.data.message === "Successful Login"){
                         alert(res.data.message)
@@ -55,25 +56,6 @@ export default  class SignIn extends  Component{
                     }
 
                 });
-        }
-        else if(this.state.customer_type === "Seller"){
-            axios.post('http://localhost:4000/business/loginseller',object)
-                .then(res => {
-                    if(res.data.message === "Successful Login"){
-                        alert(res.data.message)
-                        this.props.history.push('/index/'+Email);
-                    }
-                    else{
-                        alert(res.data.message)
-                        //window.open('/signIn')
-                        this.props.history.push('/signIn');
-                    }
-
-                });
-        }else{
-            alert('Invalid User Type..!')
-        }
-
 
         this.setState({
             email :'',
@@ -96,7 +78,6 @@ export default  class SignIn extends  Component{
                         />{''}
                         <h2 className="d-xl-inline">University of Information Technology</h2>
                     </Navbar.Brand>
-                        <img src = "https://img.freepik.com/free-vector/flat-design-minimal-technology-twitch-banner_23-2149173938.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
                 </Navbar>
@@ -132,7 +113,7 @@ export default  class SignIn extends  Component{
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Username :</label>
-                            <input type ="text" className="form-control" placeholder="raone@gmail.com" value={this.state.email} onChange = {this.onChangeEmail}/>
+                            <input type ="email" className="form-control" placeholder="raone@gmail.com" value={this.state.email} onChange = {this.onChangeEmail}/>
                         </div>
                         <div className="form-group">
                             <label>Password :</label>
