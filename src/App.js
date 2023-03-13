@@ -10,8 +10,6 @@ import Index from './components/index.component';
 import AboutUs from './components/aboutus.component';
 import SignIn from './components/signin.component';
 import Landing from './components/LandingPage.component';
-import BuyerDash from './components/buyerdash.component';
-import SellerDash from './components/sellerdash.component';
 
 
 
@@ -29,8 +27,6 @@ class App extends Component{
                         <Route  path='/index/:id' component={Index}/>
                         <Route  path='/aboutUs' component={AboutUs}/>
                         <Route  path='/signIn' component={SignIn}/>
-                        <Route  path='/BuyerDash' component={BuyerDash}/>
-                        <Route  path='/SellerDash' component={SellerDash}/>
                         <Route  path='/logout' component={Landing}/>
                     </Switch>
                 </Router>
