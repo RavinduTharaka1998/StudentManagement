@@ -13,35 +13,36 @@ class TableRow extends Component {
             .then(this.setState({redirect: true}))
             .catch(err => console.log(err))
         //this.props.history.push('/index');
+      //   this.props.history.push('/signIn');
+      alert("Your Accout Successfully Deleted....")
+      window.location.replace('/signIn');
     }
     render() {
         return (
-
-
             <div className='pro-details'>
                 <table className="table table-striped">
                    <tr>
-                      <td>studentID</td>
-                      <td>IT {this.props.obj._id}</td>
-                   </tr>
-                   <tr>
-                      <td>full name</td>
+                      <td style={{fontWeight:'bold'}}>full name</td>
                       <td>{this.props.obj.name}</td>
                    </tr>
                    <tr>
-                      <td>address</td>
+                      <td style={{fontWeight:'bold'}}>address</td>
                       <td>{this.props.obj.address}</td>
                    </tr>
                    <tr>
-                      <td>nic</td>
+                      <td style={{fontWeight:'bold'}}>nic</td>
                       <td>{this.props.obj.nic}</td>
                    </tr>
                    <tr>
-                      <td>phone</td>
+                      <td style={{fontWeight:'bold'}}>Campus ID</td>
+                      <td>{this.props.obj.campusid}</td>
+                   </tr>
+                   <tr>
+                      <td style={{fontWeight:'bold'}}>phone</td>
                       <td>{this.props.obj.phone}</td>
                    </tr>
                    <tr>
-                      <td>email</td>
+                      <td style={{fontWeight:'bold'}}>email</td>
                       <td>{this.props.obj.email}</td>
                    </tr>
                    <tr>

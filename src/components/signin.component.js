@@ -12,18 +12,18 @@ import Footer from './footer'
 export default  class SignIn extends  Component{
     constructor(props) {
         super(props);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            email:'',
+            username:'',
             password:''
         }
     }
-    onChangeEmail(e){
+    onChangeUsername(e){
         this.setState( {
-            email: e.target.value
+            username: e.target.value
         });
     }
     onChangePassword(e){
@@ -33,21 +33,21 @@ export default  class SignIn extends  Component{
     }
     onSubmit(e){
         e.preventDefault();
-        const Email = this.state.email;
+        const Username = this.state.username;
         let object = {
-            email : this.state.email,
+            username : this.state.username,
             password : this.state.password
         };
 
-       alert('mail '+this.state.email);
-       alert('pass '+this.state.password);
+    //    alert('mail '+this.state.email);
+    //    alert('pass '+this.state.password);
         
             axios.post('http://localhost:4000/campus/login',object)
                 .then(res => {
                     if(res.data.message === "Successful Login"){
-                        alert(res.data.message)
-                        alert(Email)
-                        this.props.history.push('/index/'+Email);
+                        // alert(res.data.message)
+                        // alert(Username)
+                        this.props.history.push('/index/'+Username);
                     }
                     else{
                         alert(res.data.message)
@@ -58,9 +58,8 @@ export default  class SignIn extends  Component{
                 });
 
         this.setState({
-            email :'',
-            password :'',
-            customer_type :''
+            username :'',
+            password :''
         })
     }
 
@@ -113,7 +112,7 @@ export default  class SignIn extends  Component{
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Username :</label>
-                            <input type ="email" className="form-control" placeholder="raone@gmail.com" value={this.state.email} onChange = {this.onChangeEmail}/>
+                            <input type ="text" className="form-control" placeholder="IT12345678" value={this.state.username} onChange = {this.onChangeUsername}/>
                         </div>
                         <div className="form-group">
                             <label>Password :</label>

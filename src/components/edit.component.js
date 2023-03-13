@@ -1,9 +1,11 @@
 import  React, {Component} from 'react';
-
 import axios from 'axios';
 import {Button, Form, FormControl, Navbar} from "react-bootstrap";
-import logo from "../logo.png";
 import {BrowserRouter as Router, Link} from "react-router-dom";
+
+import logo from "../logo.png";
+import './css/LandingPage.css';
+import Footer from './footer';
 
 
 export default  class Edit extends  Component{
@@ -16,32 +18,33 @@ export default  class Edit extends  Component{
         this.onChangeAddress = this.onChangeAddress.bind(this);
         this.onChangeNIC = this.onChangeNIC.bind(this);
         this.onChangePhone = this.onChangePhone.bind(this);
-        this.onChangeCustomer_Type = this.onChangeCustomer_Type.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangecPassword = this.onChangecPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             name: '',
             address: '',
             nic:'',
-            customer_type:'',
+            campusid:'',
             phone:'',
             email:'',
-            password:''
+            password:'',
+            cpassword:''
         }
     }
 
     componentDidMount() {
-        alert('edit id ' +this.props.match.params.id);
-        axios.get('http://localhost:4000/business/edit/'+this.props.match.params.id)
+        // alert('edit id ' +this.props.match.params.id);
+        axios.get('http://localhost:4000/campus/edit/'+this.props.match.params.id)
             .then(res => {
                 this.setState({
                     name: res.data.name,
                     address: res.data.address,
                     nic: res.data.nic,
                     phone: res.data.phone,
-                    customer_type: res.data.customer_type,
+                    campusid: res.data.campusid,
                     email: res.data.email,
                     password: res.data.password
                 });
@@ -63,17 +66,13 @@ export default  class Edit extends  Component{
     }
     onChangeNIC(e){
         this.setState({
-            nic: e.target.value
+            nic: e.target.value,
+            campusid:"IT21"+ e.target.value.substring(0, 6)
         });
     }
     onChangePhone(e){
         this.setState({
             phone: e.target.value
-        });
-    }
-    onChangeCustomer_Type(e){
-        this.setState({
-            customer_type: e.target.value
         });
     }
     onChangeEmail(e){
@@ -86,49 +85,91 @@ export default  class Edit extends  Component{
             password: e.target.value
         });
     }
+    onChangecPassword(e){
+        this.setState( {
+            cpassword: e.target.value
+        });
+    }
     onSubmit(e){
         e.preventDefault();
-        let Email = this.state.email;
+        let CampusID = this.state.campusid;
         const obj ={
             name: this.state.name,
             address: this.state.address,
             nic: this.state.nic,
             phone: this.state.phone,
-            customer_type: this.state.customer_type,
+            campusid: this.state.campusid,
             email: this.state.email,
             password: this.state.password,
         };
 
-        console.log('Update id '+this.props.match.params.id)
-        axios.post('http://localhost:4000/business/update/'+this.props.match.params.id,obj)
-            .then(res => console.log(res.data));
-        this.props.history.push('/index/'+Email);
+        console.log('Update id '+this.props.match.params.id);
+        const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
+        if(this.state.password ===  this.state.cpassword){
+            if(this.state.password.length >= 8){
+                if(this.state.phone.length === 10){
+                    if(this.state.nic.length === 10){
+                        if(lastelement === 'V' || lastelement === 'v'){
+                            axios.post('http://localhost:4000/campus/update/'+this.props.match.params.id,obj)
+                                .then(res => console.log(res.data));
+                            // this.props.history.push('/index/'+CampusID);
+                            alert('Your Account Details successfully Updated... Pleace Login again...');
+                            this.props.history.push('/signIn');
+                        } 
+                        else {
+                            alert('Invalid NIC Number.. Pleace enter "V" for nic.');
+                        }
+                    } 
+                    else {
+                        alert('Invalid NIC Number.. Pleace enter 10 digits for nic.');
+                    }
+                }
+                else{
+                    alert('Invalid phone number.. Pleace enter 10 numbers for contact number.');
+                }
+            } 
+            else {
+                alert('Pleace enter at least 8 characters for passwords.');
+            }
+        }else{
+            alert('Your password and confirm password are miss match... Pleace enter same passwords');
+        }
     }
 
     render() {
         return(
-            <Router>
-                <Navbar bg="dark" variant="dark">
+            <div className='wrap'>
+                <Navbar>
                     <Navbar.Brand href="#home">
                         <img
                             alt=""
                             src={logo}
-                            width="120"
+                            width="200"
                             height="120"
-                            className="d-inline-block align-top"
 
                         />{''}
-                        <h1 className="d-xl-inline">Online Buy and Sell Shopping Store</h1>
+                        <h2 className="d-xl-inline" >University of Information Technology</h2>
                     </Navbar.Brand>
+                        <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" style = {{padding :2}} height="100"/>
+                        <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360"  style = {{padding :2}} height="100"/>
                 </Navbar>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-info">
                     <div className="collapse navbar-collapse" id = "navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto font-weight-bold mr form-control-lg">
+                        <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
                             <li className="nav-item">
-                                <Link to={'/'} className = "nav-link">Home</Link>
+                                <Link to={''} className = "nav-link">Events</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/index/:id'} className = "nav-link">Profile</Link>
+                                <Link to={''} className = "nav-link">Time Tables</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={''} className = "nav-link">Subjects</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={''} className = "nav-link">Exams</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={''} className = "nav-link">Results</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to={'/logout'} className = "nav-link">Sign Out</Link>
@@ -136,12 +177,12 @@ export default  class Edit extends  Component{
                         </ul>
                     </div>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-                        <Button type="submit">Submit</Button>
+                                <input class="form-control input-sm mr-1"  type="text" placeholder='search here....'/>
+                                <Button type="submit" className='btn btn-info btn-sm'>search</Button>
                     </Form>
                 </nav>
                 <br/>
-                <div className="container" style={{marginTop:10}}>
+                <div className="container reg-frm" style={{marginTop:10}}>
                     <h3 className="text-center">Edit Your Bios</h3>
                     <form onSubmit={this.onSubmit} className="form-control-plaintext">
                         <div className="form-group">
@@ -157,12 +198,12 @@ export default  class Edit extends  Component{
                             <input type ="text" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
                         </div>
                         <div className="form-group">
-                            <label>Phone Number :</label>
-                            <input type ="text" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
+                            <label style={{color:'red',fontWeight:'bold'}}>Your Campus ID Number :</label>
+                            <input type ="text" className="form-control" value={this.state.campusid} readOnly style={{color:'green',fontWeight:'bold'}}/>
                         </div>
                         <div className="form-group">
-                            <label>Your Type :</label>
-                            <input type ="text" className="form-control" value={this.state.customer_type} onChange = {this.onChangeCustomer_Type}/>
+                            <label>Phone Number :</label>
+                            <input type ="text" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
                         </div>
                         <div className="form-group">
                             <label>email Address :</label>
@@ -172,13 +213,28 @@ export default  class Edit extends  Component{
                             <label>Password :</label>
                             <input type ="text" className="form-control" value={this.state.password} onChange = {this.onChangePassword}/>
                         </div>
+                        <div className="form-group">
+                            <label>Confirm Password :</label>
+                            <input type ="password" className="form-control" value={this.state.cpassword} onChange = {this.onChangecPassword}/>
+                        </div>
 
                         <div className="form-group">
-                            <input type = "submit" value = "Update Details" className="btn-primary"/>
+                            <input type = "submit" value = "Update Details" className="btn btn-success"/>
                         </div>
                     </form>
                 </div>
-            </Router>
+
+                <br/><br/>
+                    <div className='top-footer'>
+                        <img src = "https://media.istockphoto.com/id/1165524880/photo/happy-diverse-students-walking-in-college-campus.jpg?s=612x612&w=0&k=20&c=5Ag5hy-eDDg0jifu0tQ10uVA0DA9MRnUZ9520wwd9ck=" width="400"/>
+                        <img src = "https://www.cinec.edu/wp-content/uploads/2016/11/cinec-malabe-01-mobile.jpg" width="475"/>
+                        <img src = "https://sdticampus.lk/wp-content/uploads/2022/08/6L3A0872.jpg" width="" height=""/>
+                    </div>
+                    <div>
+                         <hr className="shadow-lg card-footer"/>
+                    </div>
+                    <Footer/>
+            </div>
         )
     }
 }

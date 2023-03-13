@@ -16,17 +16,17 @@ export default  class Index extends  Component{
     constructor(props) {
         super(props);
         this.state = {student : []};
-        this.state.Email = this.props.match.params.id;
+        this.state.Username = this.props.match.params.id;
 
         //const Email = this.props.match.params.id;
     }
 
     componentDidMount() {
-        alert('email is ' +this.props.match.params.id);
+        // alert('Username is ' +this.props.match.params.id);
         axios.get('http://localhost:4000/campus/'+this.props.match.params.id)
             .then(response => {
-                alert('Pass una')
-                alert('Data Tika :'+response.data)
+                // alert('Pass una')
+                // alert('Data Tika :'+response.data)
                 this.setState({student : response.data});
 
             })
@@ -60,14 +60,24 @@ export default  class Index extends  Component{
                     <nav className="navbar navbar-expand-lg navbar-light bg-info">
                         <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                             <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
+                               
                                 <li className="nav-item">
-                                    <Link to={'/BuyerDash/'+this.state.Email} className = "nav-link">Home</Link>
+                                    <Link to={''} className = "nav-link">Events</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/index/:id'} className = "nav-link">Profile</Link>
+                                    <Link to={''} className = "nav-link">Time Tables</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/logout'} className = "nav-link ">LogOut</Link>
+                                    <Link to={''} className = "nav-link">Subjects</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={''} className = "nav-link">Exams</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={''} className = "nav-link">Results</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/logout'} className = "nav-link">Sign Out</Link>
                                 </li>
 
                             </ul>
@@ -112,7 +122,14 @@ export default  class Index extends  Component{
                   
                     
                 </div>
-
+                <br/>
+                <div className='access'>
+                    <Link to={""} className="btn btn-outline-primary" style={{marginRight:10}}>Goto LMS</Link>
+                    <Link to={""} className="btn btn-outline-secondary" style={{marginRight:10}}>Student Library</Link>
+                    <Link to={""} className="btn btn-outline-success" style={{marginRight:10}}>Campus Events</Link>
+                    <Link to={""} className="btn btn-outline-danger" style={{marginRight:10}}>Exams</Link>
+                    <Link to={""} className="btn btn-outline-dark" style={{marginRight:10}}>Result</Link>
+                </div>
                 <div>
                     <hr className="shadow-lg card-footer"/>
                 </div>

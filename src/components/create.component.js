@@ -5,7 +5,7 @@ import {Button, Form, FormControl, Navbar} from "react-bootstrap";
 
 import logo from "../logo.png";
 import './css/LandingPage.css';
-import Footer from './footer'
+import Footer from './footer';
 
 
 export default  class Create extends  Component{
@@ -20,6 +20,7 @@ export default  class Create extends  Component{
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangecPassword = this.onChangecPassword.bind(this);
+        // this.onChangeCampusId = this.onChangeCampusId.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -29,7 +30,8 @@ export default  class Create extends  Component{
             phone:'',
             email:'',
             password:'',
-            cpassword:''
+            cpassword:'',
+            campusid:''
         }
     }
     onChangeName(e){
@@ -44,7 +46,9 @@ export default  class Create extends  Component{
     }
     onChangeNIC(e){
         this.setState( {
-            nic: e.target.value
+            nic: e.target.value,
+            campusid:"IT21"+ e.target.value.substring(0, 6)
+
         });
     }
     onChangePhone(e){
@@ -76,12 +80,13 @@ export default  class Create extends  Component{
             nic : this.state.nic,
             phone : this.state.phone,
             email : this.state.email,
-            password : this.state.password
+            password : this.state.password,
+            campusid : this.state.campusid
         };
 
         const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
        
-
+        alert("Your Campus Id is - " +this.state.campusid);
         if(this.state.password ===  this.state.cpassword){
             if(this.state.password.length >= 8){
                 if(this.state.phone.length === 10){
@@ -140,8 +145,8 @@ export default  class Create extends  Component{
                             />{''}
                             <h2 className="d-xl-inline">University of Information Technology</h2>
                         </Navbar.Brand>
-                            <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
-                            <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
+                            <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" style = {{padding :2}} height="100"/>
+                            <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" style = {{padding :2}} height="100"/>
                     </Navbar>
                     <nav className="navbar navbar-expand-lg navbar-light bg-info">
                         <div className="collapse navbar-collapse" id = "navbarSupportedContent">
@@ -199,7 +204,11 @@ export default  class Create extends  Component{
                                     <input type ="text" required placeholder = "Please enter nic" className="form-control" value={this.state.nic} onChange = {this.onChangeNIC}/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Phone Number :</label>
+                                    <label style={{color:'red',fontWeight:'bold'}}>Your Campus ID Number :</label>
+                                    <input type ="text"  className="form-control" value={this.state.campusid} readOnly style={{color:'green',fontWeight:'bold'}}/>
+                                </div>
+                                <div className="form-group">
+                                    <label >Phone Number :</label>
                                     <input type ="text" required placeholder = "Please enter contact number" className="form-control" value={this.state.phone} onChange = {this.onChangePhone}/>
                                 </div>
                                 <div className="form-group">

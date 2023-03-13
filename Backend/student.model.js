@@ -12,6 +12,9 @@ Student = new Schema({
     nic: {
         type: String
     },
+    campusid: {
+        type: String
+    },
     phone: {
         type: String
     },

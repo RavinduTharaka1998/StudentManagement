@@ -16,9 +16,9 @@ studentRoutes.route('/add').post(function (req,res){
 });
 
 studentRoutes.route('/:id').get(function (req, res){
-    let email = req.params.id;
-    console.log("yuor emaio is"+email);
-    Student.findOne({$and:[{email : email}]},function (err,std){
+    let campusid = req.params.id;
+    console.log("yuor campus id is " +campusid);
+    Student.findOne({$and:[{campusid : campusid}]},function (err,std){
         if(err)
             console.log(err);
         else{
@@ -28,55 +28,55 @@ studentRoutes.route('/:id').get(function (req, res){
 
 });
 
-// businessRoutes.route('/edit/:id').get(function (req,res){
-//     let id = req.params.id;
-//     Customers.findById(id, function (err,customers){
-//         res.json(customers);
-//     });
-// });
+studentRoutes.route('/edit/:id').get(function (req,res){
+    let id = req.params.id;
+    Student.findById(id, function (err,student){
+        res.json(student);
+    });
+});
 
-// businessRoutes.route('/update/:id').post(function (req,res){
-//     let id = req.params.id;
-//     Customers.findById(id, function (err, customers){
-//         if(!customers)
-//             res.status(404).send("Data is not found??");
-//         else{
-//             customers.name = req.body.name;
-//             customers.address = req.body.address;
-//             customers.nic = req.body.nic;
-//             customers.phone = req.body.phone;
-//             customers.customer_type = req.body.customer_type;
-//             customers.email = req.body.email;
-//             customers.password = req.body.password;
+studentRoutes.route('/update/:id').post(function (req,res){
+    let id = req.params.id;
+    Student.findById(id, function (err, student){
+        if(!student)
+            res.status(404).send("Data is not found??");
+        else{
+            student.name = req.body.name;
+            student.address = req.body.address;
+            student.nic = req.body.nic;
+            student.phone = req.body.phone;
+            student.campusid = req.body.campusid;
+            student.email = req.body.email;
+            student.password = req.body.password;
 
 
-//             customers.save().then(business => {
-//                 res.json('Update Complete');
-//             })
-//                 .catch(err =>{
-//                     res.status(400).send("Unable to update data");
-//                 });
-//         }
-//     });
-// });
+            student.save().then(business => {
+                res.json('Update Complete');
+            })
+                .catch(err =>{
+                    res.status(400).send("Unable to update data");
+                });
+        }
+    });
+});
 
-// businessRoutes.route('/delete/:id').get(function(req,res){
-//     Customers.findByIdAndRemove({_id:req.params.id}, function (err, customers){
-//         if(err)res.json(err);
+studentRoutes.route('/delete/:id').get(function(req,res){
+    Student.findByIdAndRemove({_id:req.params.id}, function (err, customers){
+        if(err)res.json(err);
 
-//         else res.json('Successfully Removed');
-//     });
-// });
+        else res.json('Successfully Removed');
+    });
+});
 
 studentRoutes.route('/login').post(function (req, res){
-    let email = req.body.email;
+    let campusid = req.body.username;
     let password = req.body.password;
 
-    console.log(+email+ +password);
+    console.log("Your Login Details" +campusid+ +password);
 
     let student = new Student(req.body);
 
-    Student.findOne({$and:[{email : email},{password : password}]})
+    Student.findOne({$and:[{campusid : campusid},{password : password}]})
         .then(student => {
             if(student){
                 student.name = req.body.name;
