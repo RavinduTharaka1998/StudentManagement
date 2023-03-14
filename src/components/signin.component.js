@@ -75,7 +75,7 @@ export default  class SignIn extends  Component{
                             height="120"
 
                         />{''}
-                        <h2 className="d-xl-inline">University of Information Technology</h2>
+                        <h2 className="d-xl-inline">School of Information Technology</h2>
                     </Navbar.Brand>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
@@ -126,9 +126,9 @@ export default  class SignIn extends  Component{
                 </div>
                 <br/><br/>
                 <div className='top-footer'>
-                    <img src = "https://media.istockphoto.com/id/1165524880/photo/happy-diverse-students-walking-in-college-campus.jpg?s=612x612&w=0&k=20&c=5Ag5hy-eDDg0jifu0tQ10uVA0DA9MRnUZ9520wwd9ck=" width="400"/>
-                    <img src = "https://www.cinec.edu/wp-content/uploads/2016/11/cinec-malabe-01-mobile.jpg" width="475"/>
-                    <img src = "https://sdticampus.lk/wp-content/uploads/2022/08/6L3A0872.jpg" width="" height=""/>
+                    <img src = "https://media.istockphoto.com/id/483322025/photo/male-student-in-classroom-writing-in-notebook.jpg?s=612x612&w=0&k=20&c=rZfH3aM4pDazcRKKGJoC0paw_OHXI1S4ttO6zOK5g4g=" width="400"/>
+                    <img src = "https://www.oxfordlearning.com/wp-content/uploads/2018/07/how-to-prepare-for-high-school-min.jpeg" width="475"/>
+                    <img src = "https://as2.ftcdn.net/v2/jpg/03/67/42/97/1000_F_367429784_WbJ6zvRljwP3yvKqcf375LOCG9xoyPEK.jpg" width="" height=""/>
                 </div>
                 <div>
                     <hr className="shadow-lg card-footer"/>

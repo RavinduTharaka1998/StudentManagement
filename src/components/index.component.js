@@ -50,7 +50,7 @@ export default  class Index extends  Component{
                                 height="120"
 
                             />{''}
-                            <h2 className="d-xl-inline" >University of Information Technology</h2>
+                            <h2 className="d-xl-inline" >School of Information Technology</h2>
                         </Navbar.Brand>
 
                             <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100" style = {{padding :2}}/>
@@ -126,7 +126,7 @@ export default  class Index extends  Component{
                 <div className='access'>
                     <Link to={""} className="btn btn-outline-primary" style={{marginRight:10}}>Goto LMS</Link>
                     <Link to={""} className="btn btn-outline-secondary" style={{marginRight:10}}>Student Library</Link>
-                    <Link to={""} className="btn btn-outline-success" style={{marginRight:10}}>Campus Events</Link>
+                    <Link to={""} className="btn btn-outline-success" style={{marginRight:10}}>Events</Link>
                     <Link to={""} className="btn btn-outline-danger" style={{marginRight:10}}>Exams</Link>
                     <Link to={""} className="btn btn-outline-dark" style={{marginRight:10}}>Result</Link>
                 </div>
