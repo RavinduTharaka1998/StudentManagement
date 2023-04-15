@@ -1,6 +1,7 @@
 import  React, {Component} from 'react';
 import axios from 'axios'
 import TableRow from './TableRow';
+import MarksTableRow from './MarksTableRow';
 import {Button, Form, FormControl, Navbar} from "react-bootstrap";
 import {BrowserRouter as Router, Link} from "react-router-dom";
 
@@ -17,7 +18,7 @@ export default  class Index extends  Component{
 
     constructor(props) {
         super(props);
-        this.state = {student : []};
+        this.state = {student : [], marks : []};
         this.state.Username = this.props.match.params.id;
 
         //const Email = this.props.match.params.id;
@@ -36,9 +37,29 @@ export default  class Index extends  Component{
                 console.log(error);
             })
     }
+
     tabRow(){
             return <TableRow obj={this.state.student}/>
     }
+
+    // componentDidMount() {
+    //     // alert('Username is ' +this.props.match.params.id);
+    //     axios.get('http://localhost:4000/campus/getmark/'+this.props.match.params.id)
+    //         .then(response => {
+    //             // alert('Pass una')
+    //             // alert('Data Tika :'+response.data)
+    //             this.setState({marks : response.data});
+
+    //         })
+    //         .catch(function (error){
+    //             console.log(error);
+    //         })
+    // }
+    // markstabRow(){
+    //     return this.state.marks.map(function (object, i){
+    //         return <MarksTableRow obj = {object} key = {i}/>;
+    //     });
+    // }
 
     render() {
         return(
@@ -133,11 +154,15 @@ export default  class Index extends  Component{
                     <Link to={""} className="btn btn-outline-secondary" style={{marginRight:10}}>Student Library</Link>
                     <Link to={""} className="btn btn-outline-success" style={{marginRight:10}}>Events</Link>
                     <Link to={""} className="btn btn-outline-danger" style={{marginRight:10}}>Exams</Link>
-                    <Link to={""} className="btn btn-outline-dark" style={{marginRight:10}}>Result</Link>
+                    <Link to={"/viewmarks/"+this.props.match.params.id} className="btn btn-outline-dark" style={{marginRight:10}}>Result</Link>
                 </div>
                 <div>
                     <hr className="shadow-lg card-footer"/>
                 </div>
+
+                <h2 style={{textAlign:'center'}}>Your Results</h2>
+                <br/>
+                
                 <Footer/>
              </div>
         );

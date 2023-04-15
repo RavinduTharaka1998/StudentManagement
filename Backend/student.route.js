@@ -3,6 +3,7 @@ const studentRoutes = express.Router();
 // const bcrytpt = require('bcryptjs')
 
 let Student = require('./student.model');
+let Mark = require('./result.model');
 
 studentRoutes.route('/add').post(function (req,res){
     let student = new Student(req.body);
@@ -23,6 +24,19 @@ studentRoutes.route('/:id').get(function (req, res){
             console.log(err);
         else{
             res.json(std)
+        }
+    });
+
+});
+
+studentRoutes.route('getmark/:id').get(function (req, res){
+    let campusid = req.params.id;
+    console.log("yuor marks campus id is " +campusid);
+    Mark.find({$and:[{campusid : campusid}]},function (err,mrk){
+        if(err)
+            console.log(err);
+        else{
+            res.json(mrk)
         }
     });
 

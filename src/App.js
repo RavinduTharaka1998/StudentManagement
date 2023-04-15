@@ -9,6 +9,7 @@ import Edit from './components/edit.component';
 import Index from './components/index.component';
 import SignIn from './components/signin.component';
 import Landing from './components/LandingPage.component';
+import ViewMarks from './components/ViewMarks';
 
 
 
@@ -26,6 +27,7 @@ class App extends Component{
                         <Route  path='/index/:id' component={Index}/>
                         <Route  path='/signIn' component={SignIn}/>
                         <Route  path='/logout' component={Landing}/>
+                        <Route  path='/viewmarks/:id' component={ViewMarks}/>
                     </Switch>
                 </Router>
 
