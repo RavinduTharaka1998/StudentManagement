@@ -6,9 +6,11 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 
 import logo from '../logo.png';
 import profile from '../profile.png';
-import Footer from './footer'
+import Footer from './footernew'
 import './css/LandingPage.css';
 import './css/profile.css';
+import Heder from './header';
+
 
 export default  class Index extends  Component{
 
@@ -41,7 +43,7 @@ export default  class Index extends  Component{
     render() {
         return(
                 <div className='wrap'>
-                    <Navbar>
+                    {/* <Navbar>
                         <Navbar.Brand href="#home">
                             <img
                                 alt=""
@@ -56,8 +58,10 @@ export default  class Index extends  Component{
                             <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100" style = {{padding :2}}/>
                             <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100" style = {{padding :2}}/>
                             <img src = {profile} height="90" style = {{padding :10}}/>
-                    </Navbar>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-info">
+                    </Navbar> */}
+
+                    <Heder/>
+                    {/* <nav className="navbar navbar-expand-lg navbar-light bg-info">
                         <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                             <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
                                
@@ -88,7 +92,8 @@ export default  class Index extends  Component{
                                 <Button type="submit" className='btn btn-info btn-sm'>search</Button>
                             </div>
                         </Form>
-                    </nav>
+                    </nav> */}
+
                     <br/>
 
                 {/* <h3 align="center">My Profile</h3>

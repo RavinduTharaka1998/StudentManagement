@@ -5,8 +5,10 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
 import logo from '../logo.png';
-import Footer from './footer'
+import Footer from './footernew'
 import './css/LandingPage.css';
+import Heder from './header';
+import List from './Navbar';
 
 
 class LandingPage extends Component{
@@ -14,7 +16,7 @@ class LandingPage extends Component{
     render() {
         return(
             <div class = "wrap">
-                    <Navbar>
+                    {/* <Navbar>
                         <Navbar.Brand>
                             <img
                                 alt=""
@@ -26,9 +28,10 @@ class LandingPage extends Component{
                         </Navbar.Brand>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" style = {{padding :3}} height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" style = {{padding :3}} height="100"/>
-                    </Navbar>
-
-                    <nav className="navbar navbar-expand-lg navbar-light bg-info ">
+                    </Navbar> */}
+                    <Heder/>
+                    <List/>
+                    {/* <nav className="navbar navbar-expand-lg navbar-light bg-info ">
                         <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                             <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
 
@@ -61,7 +64,7 @@ class LandingPage extends Component{
                         </div>
                             
                         </Form>
-                    </nav>
+                    </nav> */}
 
                     <br/>
 

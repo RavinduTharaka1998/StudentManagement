@@ -5,7 +5,9 @@ import {Button, Form, FormControl, Navbar} from "react-bootstrap";
 
 import logo from "../logo.png";
 import './css/LandingPage.css';
-import Footer from './footer';
+import Footer from './footernew';
+import Heder from './header';
+import List from './Navbar';
 
 
 export default  class Create extends  Component{
@@ -47,7 +49,7 @@ export default  class Create extends  Component{
     onChangeNIC(e){
         this.setState( {
             nic: e.target.value,
-            campusid:"IT21"+ e.target.value.substring(0, 6)
+            campusid:"21"+ e.target.value.substring(0, 6)
 
         });
     }
@@ -84,14 +86,13 @@ export default  class Create extends  Component{
             campusid : this.state.campusid
         };
 
-        const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
+        //const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
        
         alert("Your Campus Id is - " +this.state.campusid);
         if(this.state.password ===  this.state.cpassword){
             if(this.state.password.length >= 8){
                 if(this.state.phone.length === 10){
-                    if(this.state.nic.length === 10){
-                        if(lastelement === 'V' || lastelement === 'v'){
+                    if(this.state.nic.length === 12){
                             axios.post('http://localhost:4000/campus/add',obj)
                                 .then(res => {
                                     alert("Registration Successfully");
@@ -107,10 +108,6 @@ export default  class Create extends  Component{
                                     })
                                     console.log(res.data)});
                             this.props.history.push('/signIn');
-                        } 
-                        else {
-                            alert('Invalid NIC Number.. Pleace enter "V" for nic.');
-                        }
                     } 
                     else {
                         alert('Invalid NIC Number.. Pleace enter 10 digits for nic.');
@@ -134,7 +131,7 @@ export default  class Create extends  Component{
     render() {
         return(
             <div class = "wrap">
-                    <Navbar>
+                    {/* <Navbar>
                         <Navbar.Brand href="#home">
                             <img
                                 alt=""
@@ -147,8 +144,11 @@ export default  class Create extends  Component{
                         </Navbar.Brand>
                             <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" style = {{padding :2}} height="100"/>
                             <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" style = {{padding :2}} height="100"/>
-                    </Navbar>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-info">
+                    </Navbar> */}
+
+                    <Heder/>
+                    <List/>
+                    {/* <nav className="navbar navbar-expand-lg navbar-light bg-info">
                         <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                             <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
                                 <li className="nav-item">
@@ -173,7 +173,7 @@ export default  class Create extends  Component{
                                 <input class="form-control input-sm mr-1"  type="text" placeholder='search here....'/>
                                 <Button type="submit" className='btn btn-info btn-sm'>search</Button>
                         </Form>
-                    </nav>
+                    </nav> */}
                     <br/>
                     <div className='row-frm'>
                         <div className='col-frm-1'>

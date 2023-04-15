@@ -34,7 +34,7 @@ class TableRow extends Component {
                       <td>{this.props.obj.nic}</td>
                    </tr>
                    <tr>
-                      <td style={{fontWeight:'bold'}}>Campus ID</td>
+                      <td style={{fontWeight:'bold'}}>Admission Number</td>
                       <td>{this.props.obj.campusid}</td>
                    </tr>
                    <tr>
@@ -48,6 +48,7 @@ class TableRow extends Component {
                    <tr>
                       <td> <Link to={"/edit/"+this.props.obj._id} className="btn btn-success">Edit</Link></td>
                       <td><button onClick={this.deletesss} className="btn btn-danger">Delete Account</button></td>
+                      <td> <Link to={"/"} className="btn btn-warning">Logout</Link></td>
                    </tr>
                 </table>
             </div>

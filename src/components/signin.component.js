@@ -6,7 +6,9 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 
 import logo from "../logo.png";
 import './css/LandingPage.css';
-import Footer from './footer'
+import Footer from './footernew';
+import Heder from './header';
+import List from './Navbar';
 
 
 export default  class SignIn extends  Component{
@@ -66,7 +68,7 @@ export default  class SignIn extends  Component{
     render() {
         return(
             <div class = "wrap">
-                <Navbar>
+                {/* <Navbar>
                     <Navbar.Brand href="#home">
                         <img
                             alt=""
@@ -79,8 +81,10 @@ export default  class SignIn extends  Component{
                     </Navbar.Brand>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360" height="100"/>
-                </Navbar>
-                <nav className="navbar navbar-expand-lg navbar-light bg-info">
+                </Navbar> */}
+                <Heder/>
+                <List/>
+                {/* <nav className="navbar navbar-expand-lg navbar-light bg-info">
                     <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                         <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
                             <li className="nav-item">
@@ -105,7 +109,7 @@ export default  class SignIn extends  Component{
                                 <input class="form-control input-sm mr-1"  type="text" placeholder='search here....'/>
                                 <Button type="submit" className='btn btn-info btn-sm'>search</Button>
                     </Form>
-                </nav>
+                </nav> */}
                 <br/>
                 <div className="container" style={{marginTop:10, width:'30%'}}>
                     <h3 className="text-center">Sign In</h3>

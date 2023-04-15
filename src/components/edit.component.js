@@ -5,7 +5,8 @@ import {BrowserRouter as Router, Link} from "react-router-dom";
 
 import logo from "../logo.png";
 import './css/LandingPage.css';
-import Footer from './footer';
+import Footer from './footernew';
+import Heder from './header';
 
 
 export default  class Edit extends  Component{
@@ -104,21 +105,17 @@ export default  class Edit extends  Component{
         };
 
         console.log('Update id '+this.props.match.params.id);
-        const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
+        //const lastelement = this.state.nic.charAt(this.state.nic.length - 1);
         if(this.state.password ===  this.state.cpassword){
             if(this.state.password.length >= 8){
                 if(this.state.phone.length === 10){
-                    if(this.state.nic.length === 10){
-                        if(lastelement === 'V' || lastelement === 'v'){
+                    if(this.state.nic.length === 12){
                             axios.post('http://localhost:4000/campus/update/'+this.props.match.params.id,obj)
                                 .then(res => console.log(res.data));
                             // this.props.history.push('/index/'+CampusID);
                             alert('Your Account Details successfully Updated... Pleace Login again...');
                             this.props.history.push('/signIn');
-                        } 
-                        else {
-                            alert('Invalid NIC Number.. Pleace enter "V" for nic.');
-                        }
+                        
                     } 
                     else {
                         alert('Invalid NIC Number.. Pleace enter 10 digits for nic.');
@@ -139,7 +136,7 @@ export default  class Edit extends  Component{
     render() {
         return(
             <div className='wrap'>
-                <Navbar>
+                {/* <Navbar>
                     <Navbar.Brand href="#home">
                         <img
                             alt=""
@@ -152,7 +149,8 @@ export default  class Edit extends  Component{
                     </Navbar.Brand>
                         <img src = "https://img.freepik.com/free-vector/flat-design-minimalistic-technology-twitch-banner_23-2149107142.jpg" style = {{padding :2}} height="100"/>
                         <img src = "https://img.freepik.com/free-vector/gradient-halftone-technology-twitch-banner_23-2149164513.jpg?w=360"  style = {{padding :2}} height="100"/>
-                </Navbar>
+                </Navbar> */}
+                <Heder/>
                 <nav className="navbar navbar-expand-lg navbar-light bg-info">
                     <div className="collapse navbar-collapse" id = "navbarSupportedContent">
                         <ul className="navbar-nav mr-auto font-weight-bold form-control-lg text-dark ">
