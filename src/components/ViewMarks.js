@@ -17,14 +17,22 @@ export default  class ViewMarks extends  Component{
 
     constructor(props) {
         super(props);
-        this.state = {marks : []};
+        this.state = {marks : [], search:''};
         this.state.Username = this.props.match.params.id;
+
+        this.onChangeSearch = this.onChangeSearch.bind(this);
     }
 
+    onChangeSearch(e){
+        this.setState( {
+           search: e.target.value
+        });
+
+    }
    
 
     componentDidMount() {
-        alert('Username is ' +this.props.match.params.id);
+        //alert('Username is ' +this.props.match.params.id);
         axios.get('http://localhost:4000/campus/getmark/'+this.props.match.params.id)
             .then(response => {
                 // alert('Pass una')
@@ -53,17 +61,29 @@ export default  class ViewMarks extends  Component{
                     <br/>
 
                     <h2 style={{textAlign:'center'}}>Your Results</h2>
-                     <br/>
+                    <br/>
+                    
+                  
+                    <from style ={{float:'right',display:'flex',gap:5}} onSubmit={this.onSubmit}>
+                                <div className="form-group">
+                                    <input type ="text" required value={this.state.search} onChange = {this.onChangeSearch} className="form-control"/>
+                                </div>
+                                <div className="form-group" style ={{float:'right'}}>
+                                    <a href ={"/searchmarks/"+this.state.search+"/"+this.props.match.params.id} style ={{float:'right',background:'#313332',padding:7,borderRadius:5,color:'white',textDecoration:'none'}}>Search</a>
+                                </div>
+                     </from>
+                   
+                    <br/><br/><br/>
 
                     <table className="table table-striped" style = {{marginTop :20}}>
                     <thead>
                     <tr>
-                        <th></th>
+                        {/* <th></th> */}
                         <th>Year</th>
                         <th>Term</th>
                         <th>Grade</th>
                         <th>Subject</th>
-                        <th>marks</th>
+                        <th>Marks</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -29,7 +29,7 @@ studentRoutes.route('/:id').get(function (req, res){
 
 });
 
-studentRoutes.route('getmark/:id').get(function (req, res){
+studentRoutes.route('/getmark/:id').get(function (req, res){
     let campusid = req.params.id;
     console.log("yuor marks campus id is " +campusid);
     Mark.find({$and:[{campusid : campusid}]},function (err,mrk){
@@ -41,6 +41,23 @@ studentRoutes.route('getmark/:id').get(function (req, res){
     });
 
 });
+
+studentRoutes.route('/searchmarks/:pathParam1?/:pathParam2?').get(function (req, res){
+    let search = req.params.pathParam1;
+    let id = req.params.pathParam2;
+    console.log("your search is "+search);
+    console.log("your search id is "+id);
+   
+    Mark.find({$and:[{$or: [{year: search}, {term: search},{garde: search},{marks: search},{subject: search}]},{campusid: id}]},function (err,srch){ 
+   
+        if(err)
+            console.log(err);
+        else{
+            res.json(srch)
+        }
+    });
+});
+
 
 studentRoutes.route('/edit/:id').get(function (req,res){
     let id = req.params.id;

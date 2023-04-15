@@ -12,9 +12,9 @@ class TableRow extends Component {
     render() {
         return (
            <tr>
-               <td>
+               {/* <td>
                    {this.props.obj._id}
-               </td>
+               </td> */}
                <td>
                    {this.props.obj.year}
                </td>
@@ -22,7 +22,7 @@ class TableRow extends Component {
                    {this.props.obj.term}
                </td>
                <td>
-                   {this.props.obj.grade}
+                   {this.props.obj.garde}
                </td>
                <td>
                    {this.props.obj.subject}

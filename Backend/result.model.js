@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-Results = new Schema({
+Result = new Schema({
     year: {
         type: String
     },
@@ -22,7 +22,7 @@ Results = new Schema({
         type: String
     }
 }, {
-    collation: 'Results'
+    collation: 'Result'
 });
 
-module.exports = mongoose.model('Results',Results);
+module.exports = mongoose.model('Result',Result);

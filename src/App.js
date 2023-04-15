@@ -10,7 +10,7 @@ import Index from './components/index.component';
 import SignIn from './components/signin.component';
 import Landing from './components/LandingPage.component';
 import ViewMarks from './components/ViewMarks';
-
+import ViewSearchMarks from './components/ViewSearchMarks';
 
 
 
@@ -28,6 +28,7 @@ class App extends Component{
                         <Route  path='/signIn' component={SignIn}/>
                         <Route  path='/logout' component={Landing}/>
                         <Route  path='/viewmarks/:id' component={ViewMarks}/>
+                        <Route  path='/searchmarks/:pathParam1?/:pathParam2?' component={ViewSearchMarks}/>
                     </Switch>
                 </Router>
 
